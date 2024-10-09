@@ -8,7 +8,6 @@ const path = require("path");
 const cors = require("cors");
 const { type } = require("os");
 const { error } = require("console");
-const dbURL=process.env.MONGODB_URL;
 
 const cloudinary = require('cloudinary').v2;
 const { CloudinaryStorage } = require('multer-storage-cloudinary');
@@ -29,9 +28,7 @@ app.use(cors());
 // by this, the frontend reactjs project will be connected to exoress app on 4000 port.
 
 //DataBase Connection with MongoDB
-mongoose.connect(dbURL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+mongoose.connect(process.env.MONGODB_URL, {
   });
 //If the password or the username contain any of {https://docs.mongodb.com/manual/reference/connection-string/#examples} these "$ : / ? # [ ] @", then 
 //they should be put through percent encoding. 4321@Irah will be 4321%40Irah
